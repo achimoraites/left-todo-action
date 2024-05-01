@@ -1,0 +1,18 @@
+# TODO define your custom action
+name: todo-checker-action
+description: A rust action that checks TODO comments
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - "--dir=${{ inputs.dir }}"
+    - "--summary=${{ inputs.summary }}"
+inputs:
+  dir:
+    description: Path to Subdirectory to scan for TODOs
+  summary:
+    description: Write report to step summary if 'true'
+    default: "false"
+outputs:
+  count:
+    description: The number of detected TODOs
